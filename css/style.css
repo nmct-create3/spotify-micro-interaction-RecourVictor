@@ -1,4 +1,5 @@
 @import "https://unpkg.com/open-props/easings.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 :root {
     /* spotify colors*/
@@ -7,6 +8,9 @@
     --spotify-white: #ffffff;
     --spotify-grey: #b3b3b3;
     --spotify-darkGrey: #222222;
+
+    /* font family */
+    --global-fontfamily: 'Manrope', sans-serif;
 }
 
 /* reset */
@@ -27,11 +31,21 @@ svg {
 
 /* global page styles */
 
-html {}
+html {
+    color: var(--spotify-white);
+    font-family: var(--global-fontfamily);
+}
 
 /* center everything */
 
-body {}
+body {
+    background-color: var(--spotify-darkGrey);
+
+    display: grid;
+    place-items: center;
+
+    min-height: 100vh;
+}
 
 /*
     Object: Button reset
@@ -69,6 +83,75 @@ body {}
 /*
     Album
 */
+
+.album{
+    background-color: var(--spotify-black);
+    max-width: 25rem;
+    border-radius: 30px;
+    padding: 2rem;
+}
+
+.album__img{
+    border-radius: 10px;
+}
+
+.album__header{
+    margin-top: 1.5rem;
+
+    display: grid;
+    grid-template-columns: auto 2.5rem;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    grid-template-areas: 
+    "title action"
+    "artist action";
+}
+
+.album__title{
+    grid-area: title;
+}
+
+.album__artist{
+    grid-area: artist;
+    opacity: 0.5;
+}
+
+.album__action{
+    grid-area: action;
+    /* height: 100%; */
+    align-items: center;
+    display: grid;
+}
+
+.icon--add{
+    grid-row: 1;
+    grid-column: 1;
+    transform: rotate(0);
+    transition: var(--ease-bounce-1);
+    transition-duration: 0.3s;
+    
+}
+
+.icon--check{
+    grid-row: 1;
+    grid-column: 1;
+    opacity: 0;
+    color: var(--spotify-green);
+    transition: var(--ease-bounce-1);
+    transition-duration: 0.3s;
+    transform: rotate(45deg);
+}
+
+.added .icon--add {
+    opacity: 0;
+    transform: rotate(-45deg);
+}
+
+.added .icon--check {
+    opacity: 1;
+    transform: rotate(0);
+}
+
 
 /*
     Utitlities
